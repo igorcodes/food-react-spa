@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom'
-//import {GordonRamsayRecipe} from '../pages/GordonRamsayRecipe'
 
-function Meal(props) { //в обьекте meals ключи strMeal, idMeal, strMealThumb
+function Meal(props) {
     const {strMeal, idMeal, strMealThumb } = props;
 
     // возвращает обьект отсортированные блюда
