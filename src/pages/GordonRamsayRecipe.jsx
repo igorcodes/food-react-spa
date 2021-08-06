@@ -10,8 +10,8 @@ function GordonRamsayRecipe() {
 
     useEffect(() => {
 
-//достаем данные по id при помощи функ getMealById, после этого вызовем setRecipe и отправить эти данные в стейт
-        getMealById(id).then((data) => setRecipe(data.meals[0])); //по ссылке api получим массив meals с данными, в setRecipe передадим данные этого обьекта
+//достаем данные (массив meals) по id при помощи функ getMealById, после этого вызовем setRecipe и отправить эти данные в стейт
+        getMealById(id).then((data) => setRecipe(data.meals[0]));
     }, [id]); //useEffect должен срабатывать каждый раз когда id поменялся - новый параметр пришол и мы новый рецепт запросили
 
     return (
