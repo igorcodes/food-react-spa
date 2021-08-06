@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react' // импортируем из реакта состояния
+import {useState, useEffect} from 'react'
 import {useLocation, useHistory} from 'react-router-dom'
 import {getAllCategories} from '../api' // импортируем метод всех категорий
 import {Preloader} from '../components/Preloader'
@@ -6,7 +6,6 @@ import {CategoryList} from '../components/CategoryList'
 import {Search} from '../components/Search'
 
 function Home() {  
-    //каталог со всеми категориями и функция
     const [catalog, setCatalog] = useState([]);
     const [filteredCatalog, setFilteredCatalog] = useState([]);
 
@@ -15,7 +14,6 @@ function Home() {
     // console.log(push);
     // console.log(pathname, search)
 
-//фильтруем текущий каталог, берем каждый элемент каталога, обходим его 
 //strCategory это строка с именем категории, смотрим включает ли она строку кот ввел пользователь
     const handleSearch = (str) => {
         setFilteredCatalog(
@@ -27,7 +25,6 @@ function Home() {
         })
     }
 
-//getAllCategories возвращает промис со всеми данными, и будем их сдесь обрабатывать
     useEffect(() => {
         getAllCategories().then(data => {
             setCatalog(data.categories); // по ссылке api возвращает обьект categories - смортим в постман
@@ -42,12 +39,12 @@ function Home() {
         }, [search]);
 
     // если каталог путой (!catalog.length) то прелоадер
-    // если не пустой то будет выдавать отдельный компонент <CategoryList/> и буду туда спускать весь каталог catalog={ catalog }
+    // если не пустой то будет выдавать отдельный компонент <CategoryList/> и туда спускать весь каталог catalog={ catalog }
     return (
             <> 
             <Search cb={handleSearch} />
             {!catalog.length ? <Preloader /> : (
-                <CategoryList catalog={ filteredCatalog }/> //в компонент CategoryList передаю весь каталог
+                <CategoryList catalog={ filteredCatalog }/>
             )}
             </>
             );
