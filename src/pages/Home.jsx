@@ -11,8 +11,6 @@ function Home() {
 
     const {pathname, search} = useLocation();
     const {push} = useHistory();
-    // console.log(push);
-    // console.log(pathname, search)
 
 //strCategory это строка с именем категории, смотрим включает ли она строку кот ввел пользователь
     const handleSearch = (str) => {
@@ -27,7 +25,7 @@ function Home() {
 
     useEffect(() => {
         getAllCategories().then(data => {
-            setCatalog(data.categories); // по ссылке api возвращает обьект categories - смортим в постман
+            setCatalog(data.categories);
             setFilteredCatalog(search ? 
                 data.categories.filter(item => 
                     item.strCategory
